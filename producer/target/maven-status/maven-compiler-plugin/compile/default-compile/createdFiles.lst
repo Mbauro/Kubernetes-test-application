@@ -1,0 +1,5 @@
+producer/controller/ProductController.class
+producer/database/DarabaseConnection.class
+producer/Producer.class
+producer/Product/Product.class
+producer/database/ProductDAO.class
