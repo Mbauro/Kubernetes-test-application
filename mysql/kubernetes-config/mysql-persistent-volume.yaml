@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: standard
+  claimRef:
+    name: mysql-pv-claim #Bind this PV to the PVC with name 'mysql-pv-claim'. This PV cannot be claimed from others PVC with different names
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteOnce #the volume can be mounted as read-write by a single node
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200M 

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer-deployment
+  labels:
+    app: producer-deployment
+spec:
+  selector:
+    matchLabels:
+      app: java-producer
+  template:
+    metadata:
+      labels:
+        app: java-producer
+    spec:
+      containers:
+      - name: producer
+        image: producer:latest
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - secretRef:
+           name: mysql-secrets # Gets secrets for mysql user and password
+        env:
+        - name: SERVER_NAME
+          value: mysql-service
+        - name: PORT 
+          value: "3306"
+        - name: DATABASE_NAME
+          value: test-application
+        ports:
+        - containerPort: 8080
+        

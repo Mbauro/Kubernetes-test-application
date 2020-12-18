@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql #Deployment's name
+spec:
+  selector:
+    matchLabels:
+      app: mysql #This deployment groups all pods which have label app=mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:latest #Download the updated image of mysql from DockerHub
+        name: mysql #Pod's name
+        imagePullPolicy: Always
+        envFrom:
+        - secretRef:
+            name: mysql-secrets # Gets secrets from 'mysql-secrets' file
+        env:
+        - name: MYSQL_DATABASE
+          value: test-application
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /storage
+        - name: config-map-volume
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+      - name: config-map-volume
+        configMap:
+          name: mysql-config-map
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config-map
+data:
+  create-table.sql: |
+    CREATE TABLE IF NOT EXISTS products(id INT AUTO_INCREMENT PRIMARY KEY, product_name VARCHAR(100), quantity INT);
