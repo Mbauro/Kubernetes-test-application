@@ -5,7 +5,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: standard
+  storageClassName: default
   claimRef:
     name: mysql-pv-claim #Bind this PV to the PVC with name 'mysql-pv-claim'. This PV cannot be claimed from others PVC with different names
   capacity:
@@ -21,7 +21,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
 spec:
-  storageClassName: standard
+  storageClassName: default
   accessModes:
     - ReadWriteOnce
   resources:
