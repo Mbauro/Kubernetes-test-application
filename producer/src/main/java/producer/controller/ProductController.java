@@ -1,7 +1,8 @@
 package producer.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import producer.Producer;
+import producer.Product.Product;
 
 import java.util.Map;
 
@@ -10,8 +11,8 @@ public class ProductController {
     @RequestMapping(
             value = "/product/insert",
             method = RequestMethod.POST)
-    public void insert(@RequestBody Map<String,Object> jsonPayload){
-        System.out.println(jsonPayload);
+    public void insert(@RequestBody Product product){
+        product.InsertProduct(product.getName(), product.getQuantity());
     }
 
 }
