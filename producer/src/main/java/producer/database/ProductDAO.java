@@ -22,8 +22,23 @@ public class ProductDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
+    }
+    public void updateProduct(Product product,int product_id){
+        DarabaseConnection darabaseConnection = new DarabaseConnection();
+        Connection conn = darabaseConnection.openConnection();
+        String sql_query = "UPDATE product" +
+                "SET product_name = ?, quantity = ?" +
+                "WHERE id = '"+product_id+"'";
+        try{
+            PreparedStatement preparedStatement = conn.prepareStatement(sql_query);
+            preparedStatement.setString(1,product.getName());
+            preparedStatement.setInt(2,product.getQuantity());
+            preparedStatement.execute();
+            System.out.println("Product "+product.getName()+" updated");
+            darabaseConnection.closeConnection(conn);
+        }catch(SQLException e ){
+            e.printStackTrace();
+        }
     }
 
 }

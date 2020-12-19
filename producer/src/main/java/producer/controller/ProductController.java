@@ -1,10 +1,8 @@
 package producer.controller;
 
 import org.springframework.web.bind.annotation.*;
-import producer.Producer;
 import producer.Product.Product;
-
-import java.util.Map;
+import producer.database.ProductDAO;
 
 @RestController
 public class ProductController {
@@ -12,7 +10,16 @@ public class ProductController {
             value = "/product/insert",
             method = RequestMethod.POST)
     public void insert(@RequestBody Product product){
-        product.InsertProduct(product.getName(), product.getQuantity());
+        ProductDAO productDAO = new ProductDAO();
+        productDAO.insertProduct(product);
+    }
+
+    @RequestMapping(
+            value = "/product/update/{id}",
+            method = RequestMethod.POST)
+    public void update(@RequestBody Product product,@PathVariable("id") int id){
+        ProductDAO productDAO = new ProductDAO();
+        productDAO.updateProduct(product,id);
     }
 
 }

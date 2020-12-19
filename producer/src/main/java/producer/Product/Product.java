@@ -14,12 +14,6 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void InsertProduct(String name, int quantity){
-        Product product = new Product(name,quantity);
-        ProductDAO productDAO = new ProductDAO();
-        productDAO.insertProduct(product);
-    }
-
     public String getName() {
         return name;
     }
