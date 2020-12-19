@@ -28,11 +28,12 @@ public class ProductDAO {
         Connection conn = darabaseConnection.openConnection();
         String sql_query = "UPDATE product" +
                 "SET product_name = ?, quantity = ? " +
-                "WHERE id = '"+product_id+"'";
+                "WHERE id = ?";
         try{
             PreparedStatement preparedStatement = conn.prepareStatement(sql_query);
             preparedStatement.setString(1,product.getName());
             preparedStatement.setInt(2,product.getQuantity());
+            preparedStatement.setInt(2,product_id);
             preparedStatement.execute();
             System.out.println("Product "+product.getName()+" updated");
             darabaseConnection.closeConnection(conn);
