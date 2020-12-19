@@ -26,8 +26,8 @@ public class ProductDAO {
     public void updateProduct(Product product,int product_id){
         DarabaseConnection darabaseConnection = new DarabaseConnection();
         Connection conn = darabaseConnection.openConnection();
-        String sql_query = "UPDATE products" +
-                "SET product_name = ?, quantity = ?, " +
+        String sql_query = "UPDATE products SET " +
+                "product_name = ?, quantity = ? " +
                 "WHERE id = ?";
         try{
             PreparedStatement preparedStatement = conn.prepareStatement(sql_query);
