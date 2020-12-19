@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: producer
-        image: testapplicationcr.azurecr.io/producer
+        image: testapplicationcr.azurecr.io/producer:1.0
         imagePullPolicy: IfNotPresent
         envFrom:
         - secretRef:
