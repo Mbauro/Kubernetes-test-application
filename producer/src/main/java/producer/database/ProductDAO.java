@@ -33,7 +33,7 @@ public class ProductDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(sql_query);
             preparedStatement.setString(1,product.getName());
             preparedStatement.setInt(2,product.getQuantity());
-            preparedStatement.setInt(2,product_id);
+            preparedStatement.setInt(3,product_id);
             preparedStatement.execute();
             System.out.println("Product "+product.getName()+" updated");
             darabaseConnection.closeConnection(conn);
