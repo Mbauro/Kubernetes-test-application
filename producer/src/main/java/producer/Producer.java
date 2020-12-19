@@ -2,7 +2,6 @@ package producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import producer.Product.Product;
 
 @SpringBootApplication
 public class Producer {
