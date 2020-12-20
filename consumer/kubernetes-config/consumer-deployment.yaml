@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-deployment
+  labels:
+    app: consumer-deployment
+spec:
+  selector:
+    matchLabels:
+      app: java-consumer
+  template:
+    metadata:
+      labels:
+        app: java-consumer
+    spec:
+      containers:
+      - name: consumer
+        image: consumer
+        imagePullPolicy: Always
+        envFrom:
+        - secretRef:
+           name: mysql-secrets # Gets secrets for mysql user and password
+        env:
+        - name: SERVER_NAME
+          value: mysql-service
+        - name: PORT 
+          value: "3306"
+        - name: DATABASE_NAME
+          value: test-application
+        ports:
+        - containerPort: 8080
+        

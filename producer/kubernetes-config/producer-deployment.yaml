@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
       - name: producer
-        image: testapplicationcr.azurecr.io/producer:1.0
-        imagePullPolicy: IfNotPresent
+        image: producer
+        imagePullPolicy: Always
         envFrom:
         - secretRef:
            name: mysql-secrets # Gets secrets for mysql user and password

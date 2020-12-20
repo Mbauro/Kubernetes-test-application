@@ -1,8 +1,10 @@
 package producer.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import producer.Product.Product;
-import producer.database.ProductDAO;
+import producer.Product.ProductDAO;
 
 @RestController
 public class ProductController {
@@ -17,9 +19,16 @@ public class ProductController {
     @RequestMapping(
             value = "/product/update/{id}",
             method = RequestMethod.POST)
-    public void update(@RequestBody Product product,@PathVariable("id") int id){
+    public ResponseEntity<String> update(@RequestBody Product product, @PathVariable("id") int id){
+        if(product.getQuantity() < 0){
+            return new ResponseEntity<>("This quantity is not accepted", HttpStatus.BAD_REQUEST);
+        }
         ProductDAO productDAO = new ProductDAO();
-        productDAO.updateProduct(product,id);
+        String response = productDAO.updateProduct(product,id);
+        if(response.equals("Product id not found")){
+            return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(response,HttpStatus.ACCEPTED);
     }
 
 }

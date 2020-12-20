@@ -1,7 +1,5 @@
 package producer.Product;
 
-import producer.database.ProductDAO;
-
 public class Product {
     private String name;
     private int quantity;
