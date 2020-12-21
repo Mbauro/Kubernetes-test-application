@@ -1,0 +1,5 @@
+consumer/product/ProductDao.class
+consumer/ConsumerApplication.class
+consumer/product/Product.class
+consumer/database/DatabaseConnection.class
+consumer/controller/ConsumerController.class
