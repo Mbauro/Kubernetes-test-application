@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProductDao {
+public class ProductDaoImpl implements ProductDao {
 
     private boolean checkProductId(Connection conn, int product_id){
         String check_query = "SELECT product_name FROM products WHERE id = ?";

@@ -12,7 +12,7 @@ public class ConsumerController {
             value = "/product/consume/{id}",
             method = RequestMethod.POST)
     public ResponseEntity<String> update(@RequestBody Product product,@PathVariable("id") int id){
-        ProductDao productDao = new ProductDao();
+        ProductDaoImpl productDao = new ProductDaoImpl();
         String response = productDao.updateProduct(product,id);
         if (response.equals("Product id not found") || response.equals("The quantity you inserted is not available")){
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
