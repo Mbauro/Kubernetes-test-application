@@ -1,5 +1,6 @@
-consumer/product/ProductDao.class
-consumer/ConsumerApplication.class
-consumer/product/Product.class
+consumer/interfaces/ProductDao.class
 consumer/database/DatabaseConnection.class
 consumer/controller/ConsumerController.class
+consumer/product/ProductDaoImpl.class
+consumer/ConsumerApplication.class
+consumer/product/Product.class

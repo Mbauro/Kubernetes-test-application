@@ -16,7 +16,7 @@ spec:
       containers:
       - name: producer
         image: producer
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         envFrom:
         - secretRef:
            name: mysql-secrets # Gets secrets for mysql user and password

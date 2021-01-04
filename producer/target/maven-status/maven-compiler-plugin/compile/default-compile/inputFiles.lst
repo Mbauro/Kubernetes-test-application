@@ -1,5 +1,6 @@
 /home/mauro/Università/Tirocinio ST/Test-Application/producer/src/main/java/producer/Product/Product.java
 /home/mauro/Università/Tirocinio ST/Test-Application/producer/src/main/java/producer/Producer.java
 /home/mauro/Università/Tirocinio ST/Test-Application/producer/src/main/java/producer/controller/ProductController.java
-/home/mauro/Università/Tirocinio ST/Test-Application/producer/src/main/java/producer/Product/ProductDAO.java
+/home/mauro/Università/Tirocinio ST/Test-Application/producer/src/main/java/producer/Product/ProductDaoImpl.java
 /home/mauro/Università/Tirocinio ST/Test-Application/producer/src/main/java/producer/database/DatabaseConnection.java
+/home/mauro/Università/Tirocinio ST/Test-Application/producer/src/main/java/producer/interfaces/ProductDao.java
