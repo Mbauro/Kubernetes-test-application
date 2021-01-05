@@ -1,5 +1,6 @@
-/home/mauro/Università/Tirocinio ST/Test-Application/consumer/src/main/java/consumer/product/ProductDao.java
 /home/mauro/Università/Tirocinio ST/Test-Application/consumer/src/main/java/consumer/database/DatabaseConnection.java
 /home/mauro/Università/Tirocinio ST/Test-Application/consumer/src/main/java/consumer/product/Product.java
+/home/mauro/Università/Tirocinio ST/Test-Application/consumer/src/main/java/consumer/interfaces/ProductDao.java
 /home/mauro/Università/Tirocinio ST/Test-Application/consumer/src/main/java/consumer/controller/ConsumerController.java
+/home/mauro/Università/Tirocinio ST/Test-Application/consumer/src/main/java/consumer/product/ProductDaoImpl.java
 /home/mauro/Università/Tirocinio ST/Test-Application/consumer/src/main/java/consumer/ConsumerApplication.java

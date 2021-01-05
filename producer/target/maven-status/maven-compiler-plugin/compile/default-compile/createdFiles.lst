@@ -1,5 +1,6 @@
 producer/controller/ProductController.class
 producer/Producer.class
 producer/database/DatabaseConnection.class
+producer/interfaces/ProductDao.class
 producer/Product/Product.class
-producer/Product/ProductDAO.class
+producer/Product/ProductDaoImpl.class

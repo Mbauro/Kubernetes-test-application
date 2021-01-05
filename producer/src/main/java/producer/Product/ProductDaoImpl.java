@@ -40,6 +40,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
     public String updateProduct(Product product,int product_id){
         DatabaseConnection databaseConnection = new DatabaseConnection();
