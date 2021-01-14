@@ -17,7 +17,7 @@ spec:
                 name: producer-service # Which service the request will be forwarded to
                 port:
                   number: 8080 # Which port in that service
-          - path: /product/consume
+          - path: /product/(consume).*
             pathType: Prefix
             backend: # How the ingress will handle the requests
               service:
