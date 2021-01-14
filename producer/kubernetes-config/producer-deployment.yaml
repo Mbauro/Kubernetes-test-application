@@ -29,4 +29,9 @@ spec:
           value: test-application
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: 300m #Request a minimum of 300 millicores. So the application will be deployed in a node which can assures this cpu request 
+          limits:
+            cpu: 500m #Limits the cpu utilization to 500 millicores. If the application exceeds this limit it will experiences throttling
         

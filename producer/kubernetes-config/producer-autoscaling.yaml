@@ -1,0 +1,21 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: producer-hpa
+spec:
+  maxReplicas: 5 # define max numbers of replicas which will be created
+  minReplicas: 2  # define min numbers of replicas created for the application
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: producer-deployment #Bind the HorizontalPodAutoscaler to the producer deployment
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50 # target CPU utilization. If the average CPU utilization of the producer deployment exceeds this value in percentage a new Pod replica will be istantiated
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 60
