@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: test-application-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/use-regex: "true" #Enable regex to support multiple path for the same service
+spec:
+  rules:
+    #- host: test-application.test #In azure "az network dns zone list --output table" copy ZoneName
+    - http:
+        paths:
+          - path: /product/(consume).*
+            pathType: Prefix
+            backend: # How the ingress will handle the requests
+              serviceName: consumer-service # Which service the request will be forwarded to
+              servicePort: 8080 # Which port in that service
+          - path: /product/(insert|update).*
+            pathType: Prefix
+            backend: # How the ingress will handle the requests
+              serviceName: producer-service # Which service the request will be forwarded to
+              servicePort: 8080 # Which port in that service
+          
