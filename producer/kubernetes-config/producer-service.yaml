@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: producer-service
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - port: 8080 #Port exposed by the Service
     targetPort: 8080 #Port of the Pod in which redirects the traffic
